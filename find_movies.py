@@ -5,7 +5,7 @@ from twilio.rest import Client
 import os
 
 def convert_percentage(pct):
-  temp = pct[0:2]
+  temp = pct[:-1]
   numeric = int(temp)
   return numeric
 
@@ -36,6 +36,7 @@ def scrape_rt():
   return highest_rated
 
 def send_update():
+	# Bash environment variables used to hide information.
   ACCOUNT_SID = os.environ["TWILIO_ACCOUNT_SID"]
   AUTH_TOKEN = os.environ["TWILIO_AUTH_TOKEN"]
   client = Client(ACCOUNT_SID, AUTH_TOKEN)
